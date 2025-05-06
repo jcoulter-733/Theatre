@@ -1,5 +1,6 @@
 <?php
-require_once 'config.php';
+
+
 // Get the requested URL from the 'url' query parameter
 $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '';
 
