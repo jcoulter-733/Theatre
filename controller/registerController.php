@@ -1,26 +1,25 @@
 <?php
-include 'database/config.php';
-
+include '../database/config.php'
 session_start();
 
 // Input sanitization, taking away any spaces
 $username = trim($_POST['username']);
 $email = trim($_POST['email']);
 $password = trim($_POST['password']);
-//$created_at = trim($_POST['created_at']);
-//$role = trim($_POST['role']);
+// $created_at = trim($_POST['created_at']);
+// $role = trim($_POST['role']);
 
 // Validate username characters
 if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
   $_SESSION['status_message'] = 'Username can only contain letters and numbers';
-  header('Location: ../pages/register.php');
+  header('Location: register');
   exit();
 }
 
 // Validate password length
 if(strlen($password) < 8 || strlen($password) > 16) {
   $_SESSION['status_message'] = 'Password must be between 8 and 16 characters';
-  header('Location: ../pages/register.php');
+  header('Location: register');
   exit();
 }
 
@@ -39,13 +38,13 @@ $stmt->store_result();
 
 if ($stmt->num_rows > 0) {
   $_SESSION['status_message'] = 'Email or username already exists';
-  header('Location: ../pages/register.php');
+  header('Location: register');
   exit();
 } else {
     $stmt-> close();
 
     // Email doesn't exist. create new account
-    $stmt = $conn->prepare("INSERT INTO users (username, email, password_hash, created_at, role, status) VALUES (?, ?, ?, NOW(), 'user', 'active')");
+    $stmt = $conn->prepare("INSERT INTO users (username, email, password_hash, role, status) VALUES (?, ?, ?, 'user', 'active')");
 
     // Hash the password for security
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -58,15 +57,15 @@ if ($stmt->num_rows > 0) {
         // If account creation successful
         if($stmt->affected_rows > 0){
             $_SESSION['status_message'] = 'Account created successfully, Please login';
-            header('Location: ../pages/login.php');           
+            header('Location: login');           
         } else {
             $_SESSION['status_message'] = 'Error creating account';
-            header('Location: ../pages/register.php');            
+            header('Location: register');            
         }
         $stmt->close();
     } else {
         $_SESSION['status_message'] = 'Database error';
-        header('Location: ../pages/register.php');
+        header('Location: register');
     }
 
     $conn->close();
