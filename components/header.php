@@ -18,7 +18,7 @@ session_start();
         <div class="sm:ml-auto text-white">
         <a href='<?= ROOT_DIR ?>login' class="text-white text-sm mr-1">Sign In</a>
           
-          <a href='<?= ROOT_DIR ?>register' class="text-white text-sm ml-1">Sign Up</a>
+          <a href='<?= ROOT_DIR ?>register' class="text-white text-sm ml-1">Register</a>
         </div>
       </section>
 
