@@ -2,32 +2,28 @@
 include 'components/header.php';
 include 'database/config.php';
 
-$blog = $conn->prepare("SELECT blog_id, blog_title, blog_content, blog_image, blog_status, blog_created FROM blogs");
+$blog = $conn->prepare("SELECT blog_id, blog_title, blog_content, blog_image, blog_status, blog_created FROM blogs ORDER BY blog_created DESC LIMIT 3");
 $blog->execute();
 $blog->store_result();
 $blog->bind_result($id, $title, $content, $image, $status, $created);
 
 ?>
 
-<div class="grid md:grid-cols-3 gap-6 min-h-[164px] py-12 p-16 bg-gradient-to-r from-slate-800 from-50% to-slate-600 font-sans overflow-hidden">
-      <div class="md:col-span-2">
-        <h1 class="text-3xl font-bold text-white">Welcome to Theatre!</h1>
-        <p class="text-base text-gray-200 mt-4">Blogs</p>
+<!--<div class="grid md:grid-cols-3 gap-6 min-h-[164px] py-12 p-16 bg-gradient-to-r from-slate-800 from-50% to-slate-600 font-sans overflow-hidden"> -->
+<div class="grid md:grid-cols-3 gap-6 min-h-[100px] py-6 p-8 bg-gradient-to-r from-slate-700 from-50% to-slate-600 font-sans overflow-hidden">
+    <h2 class="text-3xl text-center font-extrabold text-white inline-block relative after:absolute after:w-4/6 after:h-1 after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:bg-slate-400 after:rounded-lg-full md:col-span-3">
+        Welcome to The Theatre Company
+    </h2>
+</div>
 
-        <button type="button"
-          class="py-3 px-6 text-sm font-semibold bg-blue-700 text-white hover:bg-blue-300 hover:text-amber-600 rounded-md mt-8">Start Blogging</button>
-      </div>
-
-      <div class="relative max-md:hidden">
-        <img src="https://readymadeui.com/readymadeui_banner2.webp" alt="Banner Image"
-          class="w-full right-4 top-[-13px] md:absolute skew-x-[-16deg] rotate-2 object-cover" />
+          
       </div>
     </div>
 
     <div class="bg-slate-700 font-sans">
       <div class="max-w-6xl mx-auto p-4">
         <div class="text-center">
-          <h2 class="text-3xl font-extrabold text-white inline-block relative after:absolute after:w-4/6 after:h-1 after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:bg-slate-400 after:rounded-lg-full">LATEST BLOGS</h2>
+          <h3 class="text-3xl font-bold text-white inline-block relative  after:w-4/6 after:h-1 after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:bg-slate-400 after:rounded-lg-full">LATEST BLOGS</h3>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-lg:max-w-3xl max-md:max-w-md mx-auto">
         <?php while($blog->fetch()) : ?>  

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2025 at 12:43 PM
+-- Generation Time: May 20, 2025 at 10:56 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -33,62 +33,64 @@ CREATE TABLE `blogs` (
   `blog_content` text NOT NULL,
   `user_id` int(8) NOT NULL,
   `blog_created` timestamp NOT NULL DEFAULT current_timestamp(),
-  `show_id` int(8) NOT NULL
+  `show_id` int(8) NOT NULL,
+  `blog_image` varchar(128) DEFAULT NULL,
+  `blog_status` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `blogs`
 --
 
-INSERT INTO `blogs` (`blog_id`, `blog_title`, `blog_content`, `user_id`, `blog_created`, `show_id`) VALUES
-(2, 'Behind the Scenes of Les Misérables', 'An insightful look into the making of this timeless musical...', 2, '2025-03-26 14:30:00', 2),
-(3, 'Hamilton: A Revolutionary Experience', 'The storytelling and choreography were revolutionary. A must-see show...', 3, '2025-03-27 12:15:00', 3),
-(4, 'Romeo and Juliet - A Timeless Tragedy', 'The raw emotion of the actors made this show unforgettable...', 4, '2025-03-28 16:45:00', 4),
-(5, 'A Midsummer Nights Dream: Magic on Stage', 'The whimsical costumes and delightful performances brought Shakespeare\'s play to life...', 5, '2025-03-29 11:30:00', 5),
-(6, 'The Lion King: A Jungle Adventure', 'The animal costumes and puppet work were astonishing. A beautiful performance...', 6, '2025-03-30 12:00:00', 6),
-(7, 'Wicked - A Wicked Good Time', 'An enchanting performance with incredible vocal performances and stunning visuals...', 7, '2025-03-31 17:00:00', 7),
-(8, 'Chicago: A Night of Jazz and Drama', 'A thrilling show filled with stunning choreography and unforgettable music...', 8, '2025-04-01 16:45:00', 8),
-(9, 'Cats: A Feline Fantasy', 'The energy and passion of the dancers made this performance truly magical...', 9, '2025-04-02 18:00:00', 9),
-(11, 'Othello: A Story of Jealousy and Betrayal', 'The performances were intense, and the themes were beautifully portrayed...', 11, '2025-04-04 13:15:00', 11),
-(12, 'A Chorus Line: Dance and Dreams', 'A captivating show about the hopes and struggles of dancers...', 12, '2025-04-05 20:00:00', 12),
-(13, 'The Wizard of Oz: Journey to the Emerald City', 'A colorful and fun-filled adventure that captured the magic of Oz...', 13, '2025-04-06 14:45:00', 13),
-(14, 'The Sound of Music: A Classic Reimagined', 'This show brought the beloved musical to life with fresh energy and heart...', 14, '2025-04-07 18:15:00', 14),
-(15, 'The Book of Mormon: Hilarious and Provocative', 'An uproariously funny musical with a clever storyline and catchy tunes...', 15, '2025-04-08 15:30:00', 15),
-(16, 'Hairspray: A Dance Party for the Ages', 'The show was full of energy, incredible music, and inspiring messages...', 16, '2025-04-09 12:45:00', 16),
-(17, 'Sweeney Todd: A Musical Thriller', 'A chilling and dramatic performance with standout performances...', 17, '2025-04-10 17:00:00', 17),
-(18, 'The Crucible: Witch Hunts and Mass Hysteria', 'A powerful, haunting show with a strong message about fear and persecution...', 18, '2025-04-11 19:15:00', 18),
-(19, 'Jersey Boys: The Story of Frankie Valli and The Four Seasons', 'A fantastic journey through the music of one of the greatest pop groups of all time...', 19, '2025-04-12 16:00:00', 19),
-(20, 'The Tempest: Magic and Revenge', 'A fantastical show full of magic, mystery, and stunning visuals...', 20, '2025-04-13 13:00:00', 20),
-(21, 'Fiddler on the Roof: A Family Musical', 'A heartwarming and thought-provoking story with timeless music...', 21, '2025-04-14 18:30:00', 21),
-(22, 'Mamma Mia! The Abba Musical', 'A fun-filled show full of laughter, energy, and, of course, ABBA music...', 22, '2025-04-15 15:00:00', 22),
-(23, 'The Nutcracker: A Holiday Tradition', 'The ballet was stunning, with beautiful choreography and costumes...', 23, '2025-04-16 19:30:00', 23),
-(24, 'The Seagull: A Study in Desperation', 'A powerful, dramatic show that explores the complexities of human emotions...', 24, '2025-04-17 17:15:00', 24),
-(25, 'King Lear: A Tragedy of Power', 'An intense and emotional performance with a standout lead actor...', 25, '2025-04-18 20:00:00', 25),
-(26, 'Beauty and the Beast: A Fairytale Musical', 'A beautiful, magical performance that took us back to our childhood...', 26, '2025-04-19 16:45:00', 26),
-(27, 'Waiting for Godot: A Play About Nothing', 'A mind-bending play that made us question the meaning of life and existence...', 27, '2025-04-20 19:00:00', 27),
-(28, 'Porgy and Bess: A Musical Masterpiece', 'A stunning production of the American opera filled with soulful music...', 28, '2025-04-21 13:30:00', 28),
-(29, 'Fences: A Family Drama', 'A gripping story about family dynamics, race, and ambition...', 29, '2025-04-22 18:00:00', 29),
-(30, 'The Glass Menagerie: A Tragic Family Story', 'A poignant, emotional show with incredible performances...', 30, '2025-04-23 17:30:00', 30),
-(31, 'Little Shop of Horrors: A Dark Comedy', 'A funny and creepy musical with great songs and quirky characters...', 31, '2025-04-24 16:30:00', 31),
-(32, 'The Merry Wives of Windsor: A Comedic Delight', 'Shakespeare at its best, filled with laughter and witty exchanges...', 32, '2025-04-25 18:00:00', 32),
-(33, 'West Side Story: Love and Gang Wars', 'A heartbreaking and powerful performance with a stunning score...', 33, '2025-04-26 20:00:00', 33),
-(34, 'A Streetcar Named Desire: Desire and Delusion', 'A haunting performance that delves deep into the mind of its lead character...', 34, '2025-04-27 17:45:00', 34),
-(35, 'The Tempest: Shakespeare in the Islands', 'A mystical, visually striking performance that left the audience in awe...', 35, '2025-04-28 19:00:00', 35),
-(36, 'The Importance of Being Earnest: A Comedy of Manners', 'A hilarious and brilliantly written play about mistaken identities and love...', 36, '2025-04-29 15:30:00', 36),
-(37, 'The Rocky Horror Show: A Cult Classic', 'A fun, energetic show that had the audience on their feet the entire time...', 37, '2025-04-30 18:30:00', 37),
-(38, 'Noises Off: A Farcical Delight', 'A chaotic, laugh-out-loud comedy that left the audience in stitches...', 38, '2025-05-01 19:00:00', 38),
-(39, 'Rent: A Heartfelt Musical', 'A passionate and emotional musical that tackles tough themes...', 39, '2025-05-02 17:30:00', 39),
-(40, 'The Marriage of Figaro: A Brilliant Opera', 'An elegant and witty performance that was nothing short of captivating...', 40, '2025-05-03 18:00:00', 40),
-(41, 'Macbeth: Ambition and Guilt', 'A powerful rendition of the Shakespearean tragedy with a chilling lead performance...', 41, '2025-05-04 13:00:00', 41),
-(42, 'Evita: A Story of Power and Betrayal', 'An intense and riveting musical about the life of Eva Perón...', 42, '2025-05-05 16:00:00', 42),
-(43, 'Kinky Boots: A Fun-Filled Show', 'A bright and colorful musical with a message about love and acceptance...', 43, '2025-05-06 19:30:00', 43),
-(44, 'The Phantom of the Opera: A Grand Spectacle', 'A majestic and grand performance with hauntingly beautiful music...', 44, '2025-05-07 20:15:00', 44),
-(45, 'The Book of Mormon: Satirical and Hilarious', 'A side-splitting, laugh-out-loud show with clever dialogue and unforgettable music...', 45, '2025-05-08 18:00:00', 45),
-(46, 'The Hunchback of Notre-Dame: A Dark Fairytale', 'A moving and emotional performance with incredible visuals and performances...', 46, '2025-05-09 17:00:00', 46),
-(47, 'A Little Night Music: A Musical Celebration', 'A beautiful and melancholic musical with delightful melodies...', 47, '2025-05-10 19:30:00', 47),
-(48, 'The Wizard of Oz: Classic Reimagined', 'A charming performance filled with magical moments and childhood nostalgia...', 48, '2025-05-11 14:45:00', 48),
-(49, 'Into the Woods: A Dark Fairytale', 'A clever and enchanting production that captured the complexity of its characters...', 49, '2025-05-12 19:00:00', 49),
-(50, 'Sweeney Todd: Dark and Gripping', 'A chilling and thrilling musical with incredible performances...', 50, '2025-05-13 17:30:00', 50);
+INSERT INTO `blogs` (`blog_id`, `blog_title`, `blog_content`, `user_id`, `blog_created`, `show_id`, `blog_image`, `blog_status`) VALUES
+(2, 'Behind the Scenes of Les Misérables', 'An insightful look into the making of this timeless musical...', 2, '2025-03-26 14:30:00', 2, 'theatre.png', NULL),
+(3, 'Hamilton: A Revolutionary Experience', 'The storytelling and choreography were revolutionary. A must-see show...', 3, '2025-03-27 12:15:00', 3, 'theatre.png', NULL),
+(4, 'Romeo and Juliet - A Timeless Tragedy', 'The raw emotion of the actors made this show unforgettable...', 4, '2025-03-28 16:45:00', 4, 'theatre.png', NULL),
+(5, 'A Midsummer Nights Dream: Magic on Stage', 'The whimsical costumes and delightful performances brought Shakespeare\'s play to life...', 5, '2025-03-29 11:30:00', 5, 'theatre.png', NULL),
+(6, 'The Lion King: A Jungle Adventure', 'The animal costumes and puppet work were astonishing. A beautiful performance...', 6, '2025-03-30 12:00:00', 6, 'theatre.png', NULL),
+(7, 'Wicked - A Wicked Good Time', 'An enchanting performance with incredible vocal performances and stunning visuals...', 7, '2025-03-31 17:00:00', 7, 'theatre.png', NULL),
+(8, 'Chicago: A Night of Jazz and Drama', 'A thrilling show filled with stunning choreography and unforgettable music...', 8, '2025-04-01 16:45:00', 8, 'theatre.png', NULL),
+(9, 'Cats: A Feline Fantasy', 'The energy and passion of the dancers made this performance truly magical...', 9, '2025-04-02 18:00:00', 9, 'theatre.png', NULL),
+(11, 'Othello: A Story of Jealousy and Betrayal', 'The performances were intense, and the themes were beautifully portrayed...', 11, '2025-04-04 13:15:00', 11, 'theatre.png', NULL),
+(12, 'A Chorus Line: Dance and Dreams', 'A captivating show about the hopes and struggles of dancers...', 12, '2025-04-05 20:00:00', 12, 'theatre.png', NULL),
+(13, 'The Wizard of Oz: Journey to the Emerald City', 'A colorful and fun-filled adventure that captured the magic of Oz...', 13, '2025-04-06 14:45:00', 13, 'theatre.png', NULL),
+(14, 'The Sound of Music: A Classic Reimagined', 'This show brought the beloved musical to life with fresh energy and heart...', 14, '2025-04-07 18:15:00', 14, 'theatre.png', NULL),
+(15, 'The Book of Mormon: Hilarious and Provocative', 'An uproariously funny musical with a clever storyline and catchy tunes...', 15, '2025-04-08 15:30:00', 15, 'theatre.png', NULL),
+(16, 'Hairspray: A Dance Party for the Ages', 'The show was full of energy, incredible music, and inspiring messages...', 16, '2025-04-09 12:45:00', 16, 'theatre.png', NULL),
+(17, 'Sweeney Todd: A Musical Thriller', 'A chilling and dramatic performance with standout performances...', 17, '2025-04-10 17:00:00', 17, 'theatre.png', NULL),
+(18, 'The Crucible: Witch Hunts and Mass Hysteria', 'A powerful, haunting show with a strong message about fear and persecution...', 18, '2025-04-11 19:15:00', 18, 'theatre.png', NULL),
+(19, 'Jersey Boys: The Story of Frankie Valli and The Four Seasons', 'A fantastic journey through the music of one of the greatest pop groups of all time...', 19, '2025-04-12 16:00:00', 19, 'theatre.png', NULL),
+(20, 'The Tempest: Magic and Revenge', 'A fantastical show full of magic, mystery, and stunning visuals...', 20, '2025-04-13 13:00:00', 20, 'theatre.png', NULL),
+(21, 'Fiddler on the Roof: A Family Musical', 'A heartwarming and thought-provoking story with timeless music...', 21, '2025-04-14 18:30:00', 21, 'theatre.png', NULL),
+(22, 'Mamma Mia! The Abba Musical', 'A fun-filled show full of laughter, energy, and, of course, ABBA music...', 22, '2025-04-15 15:00:00', 22, 'theatre.png', NULL),
+(23, 'The Nutcracker: A Holiday Tradition', 'The ballet was stunning, with beautiful choreography and costumes...', 23, '2025-04-16 19:30:00', 23, 'theatre.png', NULL),
+(24, 'The Seagull: A Study in Desperation', 'A powerful, dramatic show that explores the complexities of human emotions...', 24, '2025-04-17 17:15:00', 24, 'theatre.png', NULL),
+(25, 'King Lear: A Tragedy of Power', 'An intense and emotional performance with a standout lead actor...', 25, '2025-04-18 20:00:00', 25, 'theatre.png', NULL),
+(26, 'Beauty and the Beast: A Fairytale Musical', 'A beautiful, magical performance that took us back to our childhood...', 26, '2025-04-19 16:45:00', 26, 'theatre.png', NULL),
+(27, 'Waiting for Godot: A Play About Nothing', 'A mind-bending play that made us question the meaning of life and existence...', 27, '2025-04-20 19:00:00', 27, 'theatre.png', NULL),
+(28, 'Porgy and Bess: A Musical Masterpiece', 'A stunning production of the American opera filled with soulful music...', 28, '2025-04-21 13:30:00', 28, 'theatre.png', NULL),
+(29, 'Fences: A Family Drama', 'A gripping story about family dynamics, race, and ambition...', 29, '2025-04-22 18:00:00', 29, 'theatre.png', NULL),
+(30, 'The Glass Menagerie: A Tragic Family Story', 'A poignant, emotional show with incredible performances...', 30, '2025-04-23 17:30:00', 30, 'theatre.png', NULL),
+(31, 'Little Shop of Horrors: A Dark Comedy', 'A funny and creepy musical with great songs and quirky characters...', 31, '2025-04-24 16:30:00', 31, 'theatre.png', NULL),
+(32, 'The Merry Wives of Windsor: A Comedic Delight', 'Shakespeare at its best, filled with laughter and witty exchanges...', 32, '2025-04-25 18:00:00', 32, 'theatre.png', NULL),
+(33, 'West Side Story: Love and Gang Wars', 'A heartbreaking and powerful performance with a stunning score...', 33, '2025-04-26 20:00:00', 33, 'theatre.png', NULL),
+(34, 'A Streetcar Named Desire: Desire and Delusion', 'A haunting performance that delves deep into the mind of its lead character...', 34, '2025-04-27 17:45:00', 34, 'theatre.png', NULL),
+(35, 'The Tempest: Shakespeare in the Islands', 'A mystical, visually striking performance that left the audience in awe...', 35, '2025-04-28 19:00:00', 35, 'theatre.png', NULL),
+(36, 'The Importance of Being Earnest: A Comedy of Manners', 'A hilarious and brilliantly written play about mistaken identities and love...', 36, '2025-04-29 15:30:00', 36, 'theatre.png', NULL),
+(37, 'The Rocky Horror Show: A Cult Classic', 'A fun, energetic show that had the audience on their feet the entire time...', 37, '2025-04-30 18:30:00', 37, 'theatre.png', NULL),
+(38, 'Noises Off: A Farcical Delight', 'A chaotic, laugh-out-loud comedy that left the audience in stitches...', 38, '2025-05-01 19:00:00', 38, 'theatre.png', NULL),
+(39, 'Rent: A Heartfelt Musical', 'A passionate and emotional musical that tackles tough themes...', 39, '2025-05-02 17:30:00', 39, 'theatre.png', NULL),
+(40, 'The Marriage of Figaro: A Brilliant Opera', 'An elegant and witty performance that was nothing short of captivating...', 40, '2025-05-03 18:00:00', 40, 'theatre.png', NULL),
+(41, 'Macbeth: Ambition and Guilt', 'A powerful rendition of the Shakespearean tragedy with a chilling lead performance...', 41, '2025-05-04 13:00:00', 41, 'theatre.png', NULL),
+(42, 'Evita: A Story of Power and Betrayal', 'An intense and riveting musical about the life of Eva Perón...', 42, '2025-05-05 16:00:00', 42, 'theatre.png', NULL),
+(43, 'Kinky Boots: A Fun-Filled Show', 'A bright and colorful musical with a message about love and acceptance...', 43, '2025-05-06 19:30:00', 43, 'theatre.png', NULL),
+(44, 'The Phantom of the Opera: A Grand Spectacle', 'A majestic and grand performance with hauntingly beautiful music...', 44, '2025-05-07 20:15:00', 44, 'theatre.png', NULL),
+(45, 'The Book of Mormon: Satirical and Hilarious', 'A side-splitting, laugh-out-loud show with clever dialogue and unforgettable music...', 45, '2025-05-08 18:00:00', 45, 'theatre.png', NULL),
+(46, 'The Hunchback of Notre-Dame: A Dark Fairytale', 'A moving and emotional performance with incredible visuals and performances...', 46, '2025-05-09 17:00:00', 46, 'theatre.png', NULL),
+(47, 'A Little Night Music: A Musical Celebration', 'A beautiful and melancholic musical with delightful melodies...', 47, '2025-05-10 19:30:00', 47, 'theatre.png', NULL),
+(48, 'The Wizard of Oz: Classic Reimagined', 'A charming performance filled with magical moments and childhood nostalgia...', 48, '2025-05-11 14:45:00', 48, 'theatre.png', NULL),
+(49, 'Into the Woods: A Dark Fairytale', 'A clever and enchanting production that captured the complexity of its characters...', 49, '2025-05-12 19:00:00', 49, 'theatre.png', NULL),
+(50, 'Sweeney Todd: Dark and Gripping', 'A chilling and thrilling musical with incredible performances...', 50, '2025-05-13 17:30:00', 50, 'theatre.png', NULL);
 
 -- --------------------------------------------------------
 
@@ -218,70 +220,71 @@ CREATE TABLE `shows` (
   `show_name` varchar(128) NOT NULL,
   `date_shown` timestamp NOT NULL DEFAULT current_timestamp(),
   `date_added` timestamp NOT NULL DEFAULT current_timestamp(),
-  `show_type` varchar(128) NOT NULL
+  `show_type` varchar(128) NOT NULL,
+  `show_image` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `shows`
 --
 
-INSERT INTO `shows` (`show_id`, `show_name`, `date_shown`, `date_added`, `show_type`) VALUES
-(1, 'The Phantom of the Opera', '2025-03-25 19:30:00', '2025-03-22 12:00:00', 'Musical'),
-(2, 'Les Misérables', '2025-03-26 20:00:00', '2025-03-22 12:10:00', 'Musical'),
-(3, 'Hamilton', '2025-03-27 19:00:00', '2025-03-22 12:20:00', 'Musical'),
-(4, 'Romeo and Juliet', '2025-03-28 18:30:00', '2025-03-22 12:30:00', 'Drama'),
-(5, 'A Midsummer Night\'s Dream', '2025-03-29 19:45:00', '2025-03-22 12:40:00', 'Comedy'),
-(6, 'The Lion King', '2025-03-30 14:00:00', '2025-03-22 12:50:00', 'Musical'),
-(7, 'Wicked', '2025-03-31 19:15:00', '2025-03-22 13:00:00', 'Musical'),
-(8, 'Chicago', '2025-04-01 18:30:00', '2025-03-22 13:10:00', 'Musical'),
-(9, 'Cats', '2025-04-02 19:00:00', '2025-03-22 13:20:00', 'Musical'),
-(10, 'Macbeth', '2025-04-03 17:30:00', '2025-03-22 13:30:00', 'Tragedy'),
-(11, 'Othello', '2025-04-04 19:15:00', '2025-03-22 13:40:00', 'Tragedy'),
-(12, 'A Chorus Line', '2025-04-05 18:00:00', '2025-03-22 13:50:00', 'Musical'),
-(13, 'The Wizard of Oz', '2025-04-06 14:30:00', '2025-03-22 14:00:00', 'Musical'),
-(14, 'The Sound of Music', '2025-04-07 19:30:00', '2025-03-22 14:10:00', 'Musical'),
-(15, 'The Book of Mormon', '2025-04-08 18:45:00', '2025-03-22 14:20:00', 'Musical'),
-(16, 'Hairspray', '2025-04-09 19:00:00', '2025-03-22 14:30:00', 'Musical'),
-(17, 'Sweeney Todd', '2025-04-10 18:00:00', '2025-03-22 14:40:00', 'Musical'),
-(18, 'The Crucible', '2025-04-11 17:15:00', '2025-03-22 14:50:00', 'Drama'),
-(19, 'Jersey Boys', '2025-04-12 19:00:00', '2025-03-22 15:00:00', 'Musical'),
-(20, 'The Tempest', '2025-04-13 18:30:00', '2025-03-22 15:10:00', 'Comedy'),
-(21, 'Fiddler on the Roof', '2025-04-14 19:00:00', '2025-03-22 15:20:00', 'Musical'),
-(22, 'Mamma Mia!', '2025-04-15 18:30:00', '2025-03-22 15:30:00', 'Musical'),
-(23, 'The Nutcracker', '2025-04-16 14:00:00', '2025-03-22 15:40:00', 'Ballet'),
-(24, 'The Seagull', '2025-04-17 19:00:00', '2025-03-22 15:50:00', 'Drama'),
-(25, 'King Lear', '2025-04-18 18:15:00', '2025-03-22 16:00:00', 'Tragedy'),
-(26, 'Beauty and the Beast', '2025-04-19 19:30:00', '2025-03-22 16:10:00', 'Musical'),
-(27, 'Waiting for Godot', '2025-04-20 17:30:00', '2025-03-22 16:20:00', 'Comedy'),
-(28, 'Porgy and Bess', '2025-04-21 18:45:00', '2025-03-22 16:30:00', 'Opera'),
-(29, 'Fences', '2025-04-22 19:15:00', '2025-03-22 16:40:00', 'Drama'),
-(30, 'The Glass Menagerie', '2025-04-23 17:30:00', '2025-03-22 16:50:00', 'Drama'),
-(31, 'Little Shop of Horrors', '2025-04-24 19:00:00', '2025-03-22 17:00:00', 'Musical'),
-(32, 'The Merry Wives of Windsor', '2025-04-25 18:30:00', '2025-03-22 17:10:00', 'Comedy'),
-(33, 'West Side Story', '2025-04-26 19:00:00', '2025-03-22 17:20:00', 'Musical'),
-(34, 'A Streetcar Named Desire', '2025-04-27 17:45:00', '2025-03-22 17:30:00', 'Drama'),
-(35, 'The Tempest', '2025-04-28 18:15:00', '2025-03-22 17:40:00', 'Comedy'),
-(36, 'The Importance of Being Earnest', '2025-04-29 19:00:00', '2025-03-22 17:50:00', 'Comedy'),
-(37, 'The Rocky Horror Show', '2025-04-30 19:30:00', '2025-03-22 18:00:00', 'Musical'),
-(38, 'Noises Off', '2025-05-01 18:30:00', '2025-03-22 18:10:00', 'Comedy'),
-(39, 'Rent', '2025-05-02 19:00:00', '2025-03-22 18:20:00', 'Musical'),
-(40, 'The Marriage of Figaro', '2025-05-03 18:00:00', '2025-03-22 18:30:00', 'Opera'),
-(41, 'Macbeth', '2025-05-04 19:15:00', '2025-03-22 18:40:00', 'Tragedy'),
-(42, 'Evita', '2025-05-05 18:45:00', '2025-03-22 18:50:00', 'Musical'),
-(43, 'Kinky Boots', '2025-05-06 19:00:00', '2025-03-22 19:00:00', 'Musical'),
-(44, 'The Phantom of the Opera', '2025-05-07 18:30:00', '2025-03-22 19:10:00', 'Musical'),
-(45, 'The Book of Mormon', '2025-05-08 17:30:00', '2025-03-22 19:20:00', 'Musical'),
-(46, 'The Hunchback of Notre-Dame', '2025-05-09 19:00:00', '2025-03-22 19:30:00', 'Musical'),
-(47, 'A Little Night Music', '2025-05-10 18:30:00', '2025-03-22 19:40:00', 'Musical'),
-(48, 'The Wizard of Oz', '2025-05-11 14:00:00', '2025-03-22 19:50:00', 'Musical'),
-(49, 'Into the Woods', '2025-05-12 18:45:00', '2025-03-22 20:00:00', 'Musical'),
-(50, 'Sweeney Todd', '2025-05-13 19:15:00', '2025-03-22 20:10:00', 'Musical'),
-(51, 'The Nutcracker', '2025-05-14 17:00:00', '2025-03-22 20:20:00', 'Ballet'),
-(52, 'The Sound of Music', '2025-05-15 19:30:00', '2025-03-22 20:30:00', 'Musical'),
-(53, 'West Side Story', '2025-05-16 19:00:00', '2025-03-22 20:40:00', 'Musical'),
-(54, 'Annie', '2025-05-17 18:30:00', '2025-03-22 20:50:00', 'Musical'),
-(55, 'Les Misérables', '2025-05-18 19:00:00', '2025-03-22 21:00:00', 'Musical'),
-(56, 'Wicked', '2025-05-19 18:00:00', '2025-03-22 21:10:00', 'Musical');
+INSERT INTO `shows` (`show_id`, `show_name`, `date_shown`, `date_added`, `show_type`, `show_image`) VALUES
+(1, 'The Phantom of the Opera', '2025-03-25 19:30:00', '2025-03-22 12:00:00', 'Musical', NULL),
+(2, 'Les Misérables', '2025-03-26 20:00:00', '2025-03-22 12:10:00', 'Musical', NULL),
+(3, 'Hamilton', '2025-03-27 19:00:00', '2025-03-22 12:20:00', 'Musical', NULL),
+(4, 'Romeo and Juliet', '2025-03-28 18:30:00', '2025-03-22 12:30:00', 'Drama', NULL),
+(5, 'A Midsummer Night\'s Dream', '2025-03-29 19:45:00', '2025-03-22 12:40:00', 'Comedy', NULL),
+(6, 'The Lion King', '2025-03-30 14:00:00', '2025-03-22 12:50:00', 'Musical', NULL),
+(7, 'Wicked', '2025-03-31 19:15:00', '2025-03-22 13:00:00', 'Musical', NULL),
+(8, 'Chicago', '2025-04-01 18:30:00', '2025-03-22 13:10:00', 'Musical', NULL),
+(9, 'Cats', '2025-04-02 19:00:00', '2025-03-22 13:20:00', 'Musical', NULL),
+(10, 'Macbeth', '2025-04-03 17:30:00', '2025-03-22 13:30:00', 'Tragedy', NULL),
+(11, 'Othello', '2025-04-04 19:15:00', '2025-03-22 13:40:00', 'Tragedy', NULL),
+(12, 'A Chorus Line', '2025-04-05 18:00:00', '2025-03-22 13:50:00', 'Musical', NULL),
+(13, 'The Wizard of Oz', '2025-04-06 14:30:00', '2025-03-22 14:00:00', 'Musical', NULL),
+(14, 'The Sound of Music', '2025-04-07 19:30:00', '2025-03-22 14:10:00', 'Musical', NULL),
+(15, 'The Book of Mormon', '2025-04-08 18:45:00', '2025-03-22 14:20:00', 'Musical', NULL),
+(16, 'Hairspray', '2025-04-09 19:00:00', '2025-03-22 14:30:00', 'Musical', NULL),
+(17, 'Sweeney Todd', '2025-04-10 18:00:00', '2025-03-22 14:40:00', 'Musical', NULL),
+(18, 'The Crucible', '2025-04-11 17:15:00', '2025-03-22 14:50:00', 'Drama', NULL),
+(19, 'Jersey Boys', '2025-04-12 19:00:00', '2025-03-22 15:00:00', 'Musical', NULL),
+(20, 'The Tempest', '2025-04-13 18:30:00', '2025-03-22 15:10:00', 'Comedy', NULL),
+(21, 'Fiddler on the Roof', '2025-04-14 19:00:00', '2025-03-22 15:20:00', 'Musical', NULL),
+(22, 'Mamma Mia!', '2025-04-15 18:30:00', '2025-03-22 15:30:00', 'Musical', NULL),
+(23, 'The Nutcracker', '2025-04-16 14:00:00', '2025-03-22 15:40:00', 'Ballet', NULL),
+(24, 'The Seagull', '2025-04-17 19:00:00', '2025-03-22 15:50:00', 'Drama', NULL),
+(25, 'King Lear', '2025-04-18 18:15:00', '2025-03-22 16:00:00', 'Tragedy', NULL),
+(26, 'Beauty and the Beast', '2025-04-19 19:30:00', '2025-03-22 16:10:00', 'Musical', NULL),
+(27, 'Waiting for Godot', '2025-04-20 17:30:00', '2025-03-22 16:20:00', 'Comedy', NULL),
+(28, 'Porgy and Bess', '2025-04-21 18:45:00', '2025-03-22 16:30:00', 'Opera', NULL),
+(29, 'Fences', '2025-04-22 19:15:00', '2025-03-22 16:40:00', 'Drama', NULL),
+(30, 'The Glass Menagerie', '2025-04-23 17:30:00', '2025-03-22 16:50:00', 'Drama', NULL),
+(31, 'Little Shop of Horrors', '2025-04-24 19:00:00', '2025-03-22 17:00:00', 'Musical', NULL),
+(32, 'The Merry Wives of Windsor', '2025-04-25 18:30:00', '2025-03-22 17:10:00', 'Comedy', NULL),
+(33, 'West Side Story', '2025-04-26 19:00:00', '2025-03-22 17:20:00', 'Musical', NULL),
+(34, 'A Streetcar Named Desire', '2025-04-27 17:45:00', '2025-03-22 17:30:00', 'Drama', NULL),
+(35, 'The Tempest', '2025-04-28 18:15:00', '2025-03-22 17:40:00', 'Comedy', NULL),
+(36, 'The Importance of Being Earnest', '2025-04-29 19:00:00', '2025-03-22 17:50:00', 'Comedy', NULL),
+(37, 'The Rocky Horror Show', '2025-04-30 19:30:00', '2025-03-22 18:00:00', 'Musical', NULL),
+(38, 'Noises Off', '2025-05-01 18:30:00', '2025-03-22 18:10:00', 'Comedy', NULL),
+(39, 'Rent', '2025-05-02 19:00:00', '2025-03-22 18:20:00', 'Musical', NULL),
+(40, 'The Marriage of Figaro', '2025-05-03 18:00:00', '2025-03-22 18:30:00', 'Opera', NULL),
+(41, 'Macbeth', '2025-05-04 19:15:00', '2025-03-22 18:40:00', 'Tragedy', NULL),
+(42, 'Evita', '2025-05-05 18:45:00', '2025-03-22 18:50:00', 'Musical', NULL),
+(43, 'Kinky Boots', '2025-05-06 19:00:00', '2025-03-22 19:00:00', 'Musical', NULL),
+(44, 'The Phantom of the Opera', '2025-05-07 18:30:00', '2025-03-22 19:10:00', 'Musical', NULL),
+(45, 'The Book of Mormon', '2025-05-08 17:30:00', '2025-03-22 19:20:00', 'Musical', NULL),
+(46, 'The Hunchback of Notre-Dame', '2025-05-09 19:00:00', '2025-03-22 19:30:00', 'Musical', NULL),
+(47, 'A Little Night Music', '2025-05-10 18:30:00', '2025-03-22 19:40:00', 'Musical', NULL),
+(48, 'The Wizard of Oz', '2025-05-11 14:00:00', '2025-03-22 19:50:00', 'Musical', NULL),
+(49, 'Into the Woods', '2025-05-12 18:45:00', '2025-03-22 20:00:00', 'Musical', NULL),
+(50, 'Sweeney Todd', '2025-05-13 19:15:00', '2025-03-22 20:10:00', 'Musical', NULL),
+(51, 'The Nutcracker', '2025-05-14 17:00:00', '2025-03-22 20:20:00', 'Ballet', NULL),
+(52, 'The Sound of Music', '2025-05-15 19:30:00', '2025-03-22 20:30:00', 'Musical', NULL),
+(53, 'West Side Story', '2025-05-16 19:00:00', '2025-03-22 20:40:00', 'Musical', NULL),
+(54, 'Annie', '2025-05-17 18:30:00', '2025-03-22 20:50:00', 'Musical', NULL),
+(55, 'Les Misérables', '2025-05-18 19:00:00', '2025-03-22 21:00:00', 'Musical', NULL),
+(56, 'Wicked', '2025-05-19 18:00:00', '2025-03-22 21:10:00', 'Musical', NULL);
 
 -- --------------------------------------------------------
 
@@ -351,7 +354,10 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `role`, `s
 (47, 'samantha_taylor', 'samantha.taylor@example.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'user', 'active'),
 (48, 'toby_johnson', 'toby.johnson@example.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'user', 'inactive'),
 (49, 'victoria_campbel', 'victoria.campbell@example.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'user', 'active'),
-(50, 'william_davis', 'william.davis@example.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'user', 'inactive');
+(50, 'william_davis', 'william.davis@example.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'user', 'inactive'),
+(51, 'test', 'test@test.com', 'aaaa', 'user', 'active'),
+(52, 'JohnC', 'j.coulter.20349389@gmail.com', '$2y$10$crvBQCDNmuJd5VHVCEKND.rjIKQS6N449uml7cOtb9U4.NCWhXVwy', 'admin', 'active'),
+(53, 'JohnA', 'j.coulter.2034938@gmail.com', '$2y$10$B/SpeHD5/y/BSv6GZULE2eDddWEAxaHYsdSsclXVrIaP6FlombkFi', 'user', 'active');
 
 --
 -- Indexes for dumped tables
@@ -427,7 +433,7 @@ ALTER TABLE `shows`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `user_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Constraints for dumped tables

@@ -11,14 +11,14 @@ include 'database/config.php';
         </div>
 
         <div class="flex items-center p-6 h-full w-full">
-          <form class="max-w-lg w-full mx-auto" action="../theatre/controller/registerController.php"method="post">
+          <form class="max-w-lg w-full mx-auto" action="registerController"method="post">
             <div class="mb-8">
               <h3 class="text-blue-500 text-2xl font-bold max-md:text-center">Create an account</h3>
             </div>
 
             <!-- status message -->
           <?php if (isset($_SESSION['status_message'])) : ?>
-            <div class="status-message"><?= $_SESSION['status_message'] ?></div>
+            <div class="status-message"><?= $_SESSION['status_message'] ?>llllll</div>
           <?php unset($_SESSION['status_message']) ?>
               <?php endif?>
 

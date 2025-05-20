@@ -1,5 +1,5 @@
 <?php
-include '../database/config.php'
+include 'database/config.php';
 session_start();
 
 // Input sanitization, taking away any spaces
