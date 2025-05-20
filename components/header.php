@@ -16,9 +16,9 @@ session_start();
       <section class="bg-slate-700 min-h-[40px] px-4 py-2 sm:px-10 flex items-center max-sm:flex-col">
         
         <div class="sm:ml-auto text-white">
-        <a href='<?= ROOT_DIR ?>login' class="text-white text-sm mr-1">Sign In</a>
-          
-          <a href='<?= ROOT_DIR ?>register' class="text-white text-sm ml-1">Register</a>
+        <a href='<?= ROOT_DIR ?>login' class="text-white text-m mr-1">Sign In</a>
+          |
+          <a href='<?= ROOT_DIR ?>register' class="text-white text-m ml-1">Register</a>
         </div>
       </section>
 
@@ -49,15 +49,15 @@ session_start();
             
             <li
               class='max-lg:border-b max-lg:py-3 relative lg:after:absolute lg:after:bg-white lg:after:w-full lg:after:h-[2px] lg:after:block lg:after:-bottom-4 lg:after:transition-all lg:after:duration-300'>
-              <a href='<?= ROOT_DIR ?>show-list' class='text-white block text-[15px] font-medium'>Shows</a>
+              <a href='<?= ROOT_DIR ?>show-list' class='text-white block text-[25px] font-medium'>Shows</a>
             </li>
             <li
               class='max-lg:border-b max-lg:py-3 relative lg:hover:after:absolute lg:after:bg-white lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:-bottom-4 lg:after:transition-all lg:after:duration-300'>
-              <a href='<?= ROOT_DIR ?>blog-list' class='text-white block text-[15px] font-medium'>Blogs</a>
+              <a href='<?= ROOT_DIR ?>blog-list' class='text-white block text-[25px] font-medium'>Blogs</a>
             </li>
             <li
               class='max-lg:border-b max-lg:py-3 relative lg:hover:after:absolute lg:after:bg-white lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:-bottom-4 lg:after:transition-all lg:after:duration-300'>
-              <a href='<?= ROOT_DIR ?>contact' class='text-white block text-[15px] font-medium'>Contact</a>
+              <a href='<?= ROOT_DIR ?>contact' class='text-white block text-[25px] font-medium'>Contact</a>
             </li>
                        
           </ul>
