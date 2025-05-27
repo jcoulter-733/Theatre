@@ -8,18 +8,22 @@ $blog->bind_result($id, $name, $type, $image, $date_shown, $date_added);
 
 ?>
    
-      </div>
-    </div>
+
 
     <div class="bg-slate-700 font-sans">
       <div class="max-w-6xl mx-auto p-4">
+        
+        <div class="container rounded-xl px-14 py-4 mx-auto bg-yellow-800 bg-opacity-25 border-2 border-yellow-500 text-center">
         <div class="text-center">
           <h3 class="text-3xl font-bold text-white inline-block relative  after:w-4/6 after:h-1 after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:bg-slate-400 after:rounded-lg-full">LATEST SHOWS</h3>
+
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-lg:max-w-3xl max-md:max-w-md mx-auto">
         <?php while($blog->fetch()) : ?>  
 
         <!-- "Blog Posts" -->
+        
+         
   <div class="bg-white cursor-pointer rounded-lg overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] relative group">  
        
     <?php 
@@ -36,7 +40,7 @@ $blog->bind_result($id, $name, $type, $image, $date_shown, $date_added);
     $imageFolder = 'assets/images/';
     $imageLink = $imageFolder . $formattedName . $fileType;
     ?>
-    
+  
   <a href="show?bid=<?= $id ?> ">
     <img src="<?= ROOT_DIR?><?= $imageLink ?>" alt="<?= $name ?>" class="w-full h-96 object-cover" />
   </a>
@@ -66,4 +70,3 @@ $blog->bind_result($id, $name, $type, $image, $date_shown, $date_added);
 
 <?php
 include 'components/footer.php';
-?>

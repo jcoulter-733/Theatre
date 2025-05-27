@@ -40,6 +40,7 @@ $imageLink = $imageFolder . $formattedName . $fileType;
     <h1 class="text-8xl font-semibold text-yellow-500 capitalize lg:text-8xl dark:text-yellow-500"><?= $name ?></h1>
     <div class="container sm mx-auto bg-black bg-opacity-0 border-1 border-yellow-200">
     <p style="margin-left:220px"class="text-2xl font-extrabold text-yellow-200 uppercase"><?= $type ?></p>
+    
     </div>
 
     <div class="mt-8 lg:-mx-6 lg:flex lg:items-start">

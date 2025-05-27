@@ -2,8 +2,7 @@
   <!-- Main page content -->
   <main class="flex-grow">
     <!-- Your page content goes here -->
-  </main>
-
+</main>
   <!-- Footer -->
   <footer class="bg-gray-900 text-gray-300 py-6 px-16 tracking-wide min-h-64">
     <div class="flex justify-between items-center max-lg:flex-col text-center flex-wrap gap-4">
