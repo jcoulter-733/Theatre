@@ -6,11 +6,12 @@ $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '';
 
 // Define available routes (URL => corresponding PHP file)
 $routes = [
-    '' => 'pages/home.php',          // Home route
+    '' => 'pages/home.php', // Home route
+    'home' => 'pages/home.php',          // Home Page
     'contact' => 'pages/contact.php',          // contact route
     'register' => 'pages/register.php',    // register page route
     'login' => 'pages/login.php', // login page route
-    'blog-list' => 'pages/home.php', // blog page route (home)
+    'blog-list' => 'pages/blog-list.php', // blog page route (home)
     'blog' => 'pages/blog-single.php', // Individual Blog Page route
     'show-list' => 'pages/show-list.php', // Show list route
     'show' => 'pages/show-single.php',

@@ -7,10 +7,7 @@ $blog->store_result();
 $blog->bind_result($id, $name, $type, $image, $date_shown, $date_added);
 
 ?>
-
-
-
-          
+   
       </div>
     </div>
 
@@ -33,27 +30,27 @@ $blog->bind_result($id, $name, $type, $image, $date_shown, $date_added);
       } else {
           $formattedDateShown = 'Unknown Date';
       }
-      if (isset($date_added) && !empty($date_added)) {
-        $date_added = new DateTime($date_added);
-        $formattedDateAdded = $date_added->format("F j, Y, g:i A");
-    } else {
-        $formattedDateAdded = 'Unknown Date';
-    }
+ 
     $fileType = '.jpeg';
     $formattedName = str_replace(' ', '_', $name);
     $imageFolder = 'assets/images/';
     $imageLink = $imageFolder . $formattedName . $fileType;
     ?>
     
+  <a href="show?bid=<?= $id ?> ">
     <img src="<?= ROOT_DIR?><?= $imageLink ?>" alt="<?= $name ?>" class="w-full h-96 object-cover" />
+  </a>
     
-    <div class="p-6 absolute bottom-0 left-0 right-0 bg-black opacity-75">
+    <div class= "p-6 absolute bottom-0 left-0 right-0 bg-black opacity-75 border-2 border-white">
+    
       <span class="text-sm block text-white mb-2"><?= $formattedDateShown ?> | BY AUTHOR</span>
       <h3 class="text-xl font-bold text-white"><?= $name ?></h3>
-      <div class="h-0 overflow-hidden group-hover:h-16 group-hover:mt-4 transition-all duration-300">
-        <a href="show-single?bid=<?= $id ?>" class="text-white text-sm">Read More</a>
+
+      <div class="h-0 overflow-hidden group-hover:h-16 group-hover:mt-4 transition-all duration-600">
+        <a href="show?bid=<?= $id ?>" class="text-white text-sm">Read More</a>
         <p class="text-white text-sm"><?= $type ?></p>
       </div>
+
     </div>
    
   </div>

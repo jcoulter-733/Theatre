@@ -15,15 +15,15 @@ session_start();
 <header class='font-[sans-serif] min-h-[60px] tracking-wide relative z-50'>
       <section class="bg-slate-700 min-h-[40px] px-4 py-2 sm:px-10 flex items-center max-sm:flex-col">
         
-        <div class="sm:ml-auto text-white">
-        <a href='<?= ROOT_DIR ?>login' class="text-white text-m mr-1">Sign In</a>
+        <div class="sm:ml-auto text-yellow-700">
+        <a href='<?= ROOT_DIR ?>login' class="text-yellow-500 text-m mr-1">Sign In</a>
           |
-          <a href='<?= ROOT_DIR ?>register' class="text-white text-m ml-1">Register</a>
+          <a href='<?= ROOT_DIR ?>register' class="text-yellow-500 text-m ml-1">Register</a>
         </div>
       </section>
 
       <div class='flex flex-wrap items-center justify-between py-3 px-4 sm:px-10 bg-slate-700 lg:gap-y-4 gap-y-6 gap-x-4'>
-        <a href="javascript:void(0)"><img src="assets/images/clyde_theatre_tp.png" alt="logo" class='sm:w-[140px] w-[130px]' />
+        <a href="home"><img src="assets/images/clyde_theatre_tp.png" alt="logo" class='h-14 w-14 sm:w-[100px] w-[95px]' />
         </a>
 
         <div id="collapseMenu"
@@ -49,15 +49,15 @@ session_start();
             
             <li
               class='max-lg:border-b max-lg:py-3 relative lg:after:absolute lg:after:bg-white lg:after:w-full lg:after:h-[2px] lg:after:block lg:after:-bottom-4 lg:after:transition-all lg:after:duration-300'>
-              <a href='<?= ROOT_DIR ?>show-list' class='text-white block text-[25px] font-medium'>Shows</a>
+              <a href='<?= ROOT_DIR ?>show-list' class='text-yellow-500 block text-[25px] font-medium'>Shows</a>
             </li>
             <li
               class='max-lg:border-b max-lg:py-3 relative lg:hover:after:absolute lg:after:bg-white lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:-bottom-4 lg:after:transition-all lg:after:duration-300'>
-              <a href='<?= ROOT_DIR ?>blog-list' class='text-white block text-[25px] font-medium'>Blogs</a>
+              <a href='<?= ROOT_DIR ?>blog-list' class='text-yellow-500 block text-[25px] font-medium'>Blogs</a>
             </li>
             <li
               class='max-lg:border-b max-lg:py-3 relative lg:hover:after:absolute lg:after:bg-white lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:-bottom-4 lg:after:transition-all lg:after:duration-300'>
-              <a href='<?= ROOT_DIR ?>contact' class='text-white block text-[25px] font-medium'>Contact</a>
+              <a href='<?= ROOT_DIR ?>contact' class='text-yellow-500 block text-[25px] font-medium'>Contact</a>
             </li>
                        
           </ul>
