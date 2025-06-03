@@ -15,7 +15,7 @@ ini_set('display_errors', 1);
     <link rel="stylesheet" href="<?= ROOT_DIR ?>assets/css/style.css">
 </head>
 <body class="flex flex-col min-h-screen">
-<header class='flex shadow-lg py-4 px-4 sm:px-10 font-[sans-serif] min-h-[70px] tracking-wide relative z-50'>
+<header class='flex shadow-lg bg-black py-4 px-4 sm:px-10 font-[sans-serif] min-h-[70px] tracking-wide relative z-50'>
   <div class='flex flex-wrap items-center justify-between gap-4 w-full'>
     <a href="home" class="hidden max-sm:block">The Theatre Company</a>
 
@@ -32,30 +32,30 @@ ini_set('display_errors', 1);
           <img src="<?= ROOT_DIR ?>assets/images/clyde_theatre_tp.png" alt="logo" class='w-36' />
         </li>
         <li class='max-lg:border-b max-lg:py-3 px-3'>
-          <a href='<?= ROOT_DIR ?>home' class='hover:text-[#007bff] text-[#007bff] block font-semibold text-[15px]'>Home</a>
+          <a href='<?= ROOT_DIR ?>home' class='hover:text-[#007bff] text-yellow-500 block font-semibold text-[15px]'>Home</a>
         </li>
         <li class='max-lg:border-b max-lg:py-3 px-3'>
-          <a href='<?= ROOT_DIR ?>blog-list' class='hover:text-[#007bff] text-[#333] block font-semibold text-[15px]'>Blog</a>
+          <a href='<?= ROOT_DIR ?>blog-list' class='hover:text-[#007bff] text-yellow-500 block font-semibold text-[15px]'>Blog</a>
         </li>
 
         <!-- Check if logged in and display role-based pages -->
         <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) : ?>
           <?php if ($_SESSION['role'] === 'admin') : ?>
             <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>admin' class='hover:text-[#007bff] text-[#333] block font-semibold text-[15px]'>Dashboard</a>
+              <a href='<?= ROOT_DIR ?>admin' class='hover:text-[#007bff] text-yellow-500 block font-semibold text-[15px]'>Dashboard</a>
             </li>
             <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>admin/comments' class='hover:text-[#007bff] text-[#333] block font-semibold text-[15px]'>Comments</a>
+              <a href='<?= ROOT_DIR ?>admin/comments' class='hover:text-[#007bff] text-yellow-500 block font-semibold text-[15px]'>Comments</a>
             </li>
             <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>edit-blogs' class='hover:text-[#007bff] text-[#333] block font-semibold text-[15px]'>Edit Blogs</a>
+              <a href='<?= ROOT_DIR ?>edit-blogs' class='hover:text-[#007bff] text-yellow-500 block font-semibold text-[15px]'>Edit Blogs</a>
             </li>
             <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>add-blog' class='hover:text-[#007bff] text-[#333] block font-semibold text-[15px]'>Add Blogs</a>
+              <a href='<?= ROOT_DIR ?>add-blog' class='hover:text-[#007bff] text-yellow-500 block font-semibold text-[15px]'>Add Blogs</a>
             </li>
           <?php elseif ($_SESSION['role'] === 'user') : ?>
             <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>user/dashboard' class='hover:text-[#007bff] text-[#333] block font-semibold text-[15px]'>Dashboard</a>
+              <a href='<?= ROOT_DIR ?>user/dashboard' class='hover:text-[#007bff] text-yellow-500 block font-semibold text-[15px]'>Dashboard</a>
             </li>
           <?php endif ?>
 
@@ -63,7 +63,7 @@ ini_set('display_errors', 1);
         <?php endif ?>
 
         <li class='max-lg:border-b max-lg:py-3 px-3'>
-          <a href='<?= ROOT_DIR ?>contact' class='hover:text-[#007bff] text-[#333] block font-semibold text-[15px]'>Contact</a>
+          <a href='<?= ROOT_DIR ?>contact' class='hover:text-[#007bff] text-yellow-500 block font-semibold text-[15px]'>Contact</a>
         </li>
       </ul>
     </div>
@@ -72,9 +72,9 @@ ini_set('display_errors', 1);
       <!-- Only show the login and signup buttons if the user is not logged in -->
       <?php if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) : ?>
         <button class='font-semibold text-[15px] border-none outline-none'>
-          <a href='<?= ROOT_DIR ?>login' class='text-[#007bff] hover:underline'>Login</a>
+          <a href='<?= ROOT_DIR ?>login' class='text-yellow-500 hover:underline'>Login</a>
         </button>
-        <a href="<?= ROOT_DIR ?>register" class='px-4 py-2 text-sm rounded-sm font-bold text-white border-2 border-[#007bff] bg-[#007bff] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#007bff]'>Sign up</a>
+        <a href="<?= ROOT_DIR ?>register" class='px-4 py-2 text-sm rounded-sm font-bold text-black border-2 border-yellow-300 bg-yellow-500 transition-all ease-in-out duration-300 hover:bg-transparent hover:text-yellow-500'>Sign up</a>
         <?php else : ?>
           <button class='font-semibold text-[15px] border-none outline-none'>
           <a href="<?= ROOT_DIR ?>logoutController" class='px-4 py-2 text-sm rounded-sm font-bold text-white border-2 border-[#007bff] bg-[#007bff] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#007bff]'>Logout</a>
