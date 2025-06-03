@@ -3,7 +3,7 @@ include 'components/header.php';
 include 'database/config.php';
 
 $blog = $conn->prepare("SELECT
-                       b.user_id, b.blog_title, b.blog_content, b.blog_image, b.blog_status, b.created_at, u.username
+                       b.blog_id, b.user_id, b.blog_title, b.blog_content, b.blog_image, b.blog_status, b.created_at, u.username
                        FROM newblogs b
                        INNER JOIN users u ON b.user_id = u.user_id
                        WHERE blog_status ='Published' 
@@ -11,7 +11,7 @@ $blog = $conn->prepare("SELECT
                        DESC LIMIT 3");
 $blog->execute();
 $blog->store_result();
-$blog->bind_result($id, $title, $content, $image, $status, $created, $username);
+$blog->bind_result($blog_id, $user_id, $title, $content, $image, $status, $created, $username);
 
 ?>
 
@@ -53,7 +53,7 @@ $blog->bind_result($id, $title, $content, $image, $status, $created, $username);
       <span class="text-sm block text-yellow-600 mb-2"><?= $formattedDate ?> | <?= $username ?></span>
       <h3 class="text-xl font-bold text-yellow-500"><?= $title ?></h3>
       <div class="h-0 overflow-hidden group-hover:h-16 group-hover:mt-2 transition-all duration-500">
-        <a href="<?= ROOT_DIR ?>pages/blog-info.php?bid=<?= $id ?>" class="text-yellow-300 text-sm">Read More</a>
+        <a href="<?= ROOT_DIR ?>blog?bid=<?= $blog_id ?>" class="text-yellow-300 text-sm">Read More</a>
         <p class="text-white text-sm"><?= $content ?></p>
       </div>
     </div>

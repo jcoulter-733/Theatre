@@ -7,14 +7,13 @@ $uid = isset($_GET['uid']) ? (int) $_GET['uid'] : 0;
 
     // Prepare the statement with a placeholder
     $approve = $conn->prepare("UPDATE 
-    user SET 
-    firstname = ? ,
-    surname = ?,
+    users SET 
+    username = ? ,
     email = ?
-    WHERE id = ?");
+    WHERE user_id = ?");
     
     // Bind the parameter (i = integer)
-    $approve->bind_param("sssi", $_POST['firstname'], $_POST['surname'], $_POST['email'], $uid);
+    $approve->bind_param("ssi", $_POST['username'], $_POST['email'], $uid);
     
     // Execute the query
     if ($approve->execute()) {
@@ -28,6 +27,6 @@ $uid = isset($_GET['uid']) ? (int) $_GET['uid'] : 0;
 
 
 // Redirect back to the comments page
-header("Location: dashboard");
+header("Location: admin");
 exit();
 ?>

@@ -2,14 +2,14 @@
 include 'components/header.php';
 include 'database/config.php';
 $blog = $conn->prepare("SELECT 
-                        b.user_id, b.blog_title, b.blog_content, b.blog_image, b.blog_status, b.created_at, u.username
+                        b.blog_id, b.user_id, b.blog_title, b.blog_content, b.blog_image, b.blog_status, b.created_at, u.username
                        FROM newblogs b
                        INNER JOIN users u ON b.user_id = u.user_id
                        WHERE blog_status ='Published' 
                        ORDER BY created_at");
 $blog->execute();
 $blog->store_result();
-$blog->bind_result($id, $title, $content, $image, $status, $created, $username);
+$blog->bind_result($blog_id, $user_id, $title, $content, $image, $status, $created, $username);
 
 ?>
    
@@ -46,7 +46,7 @@ $blog->bind_result($id, $title, $content, $image, $status, $created, $username);
       <span class="text-sm block text-white mb-2"><?= $formattedDateShown ?> | BY <?= $username ?></span>
       <h3 class="text-xl font-bold text-white"><?= $content ?></h3>
       <div class="h-0 overflow-hidden group-hover:h-16 group-hover:mt-4 transition-all duration-300">
-        <a href="blog?bid=<?= $id ?>" class="text-white text-sm">Read More</a>
+        <a href="blog?bid=<?= $blog_id ?>" class="text-white text-sm">Read More</a>
         <p class="text-white text-sm"><?= $content ?></p>
       </div>
     </div>

@@ -6,7 +6,7 @@ session_start();
 $bid = isset($_GET['bid']) ? (int) $_GET['bid'] : 0;
 
     // Prepare the statement with a placeholder
-    $approve = $conn->prepare("UPDATE blog SET status = 'published' WHERE id = ?");
+    $approve = $conn->prepare("UPDATE newblogs SET blog_status = 'published' WHERE blog_id = ?");
     
     // Bind the parameter (i = integer)
     $approve->bind_param("i", $bid);
@@ -23,6 +23,6 @@ $bid = isset($_GET['bid']) ? (int) $_GET['bid'] : 0;
 
 
 // Redirect back to the comments page
-header("Location: blogs");
+header("Location: edit-blogs");
 exit();
 ?>
