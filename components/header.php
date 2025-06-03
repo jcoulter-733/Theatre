@@ -29,11 +29,9 @@ ini_set('display_errors', 1);
         </svg>
       </button>
 
-      <ul class='lg:flex lg:gap-x-5 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50'>
+      <ul class='lg:flex lg:gap-x-8 max-lg:space-y-6 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50'>
       
-        <li>
-          
-        </li>
+        
         <li class='max-lg:border-b max-lg:py-3 px-3'>
         
           <a href='<?= ROOT_DIR ?>home' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Home</a>

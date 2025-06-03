@@ -39,25 +39,26 @@ $imageLink = $imageFolder . $formattedName . $fileType;
   <div class="container rounded-xl px-4 py-4 mx-auto bg-yellow-800 bg-opacity-25 border-2 border-yellow-500">
     <h1 class="text-8xl font-semibold text-yellow-500 capitalize lg:text-8xl dark:text-yellow-500"><?= $name ?></h1>
     <div class="container sm mx-auto bg-black bg-opacity-0 border-1 border-yellow-200">
-    <p style="margin-left:220px"class="text-2xl font-extrabold text-yellow-200 uppercase"><?= $type ?></p>
+    
     
     </div>
 
     <div class="mt-8 lg:-mx-6 lg:flex lg:items-start">
       <img
-        class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96"
+        class=" border-4 border-red-500 object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96"
         src="<?= ROOT_DIR ?><?= $imageLink ?>"
         alt="<?= $name ?>"
       />
 
       <div class="mt-2 lg:w-1/2 lg:mt-0 lg:mx-6">
-    <p class="mt-3 text-4xl font-bold text-white underline decoration-yellow-500 align-text-top">
+    <p class="mt-3 text-3xl font-bold text-white underline decoration-yellow-500 align-text-top">
         Show Time: <?= $formattedDate ?>
     </p>
 
         <p class="text-3xl text-yellow-100 py-4">
           <?= $showInfo ?>
         </p>
+        <p style="margin-top:50px"class="text-2xl font-extrabold text-red-400 uppercase">Show Type: <?= $type ?></p>
 
         
       </div>
