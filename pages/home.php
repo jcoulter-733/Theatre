@@ -17,7 +17,7 @@ $blog->bind_result($blog_id, $user_id, $title, $content, $image, $status, $creat
 
 <!--<div class="grid md:grid-cols-3 gap-6 min-h-[164px] py-12 p-16 bg-gradient-to-r from-slate-800 from-50% to-slate-600 font-sans overflow-hidden"> -->
 <div class="grid md:grid-cols-3 gap-6 min-h-[100px] py-6 p-8 bg-gradient-to-r from-slate-700 from-50% to-slate-600 font-sans overflow-hidden">
-    <h2 class="text-3xl text-center font-extrabold text-yellow-500 inline-block relative after:absolute after:w-4/6 after:h-1 after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:bg-slate-400 after:rounded-lg-full md:col-span-3">
+    <h2 class="text-6xl text-center font-extrabold text-yellow-500 inline-block relative after:absolute after:w-4/6 after:h-1 after:left-0 after:right-0 after:-bottom-4 after:mx-auto after:bg-slate-400 after:rounded-lg-full md:col-span-3">
         Welcome to The Theatre Company
     </h2>
 </div>
