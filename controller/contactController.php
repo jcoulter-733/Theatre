@@ -11,26 +11,26 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// 1) Pull & sanitize into variables
+
 $name    = trim($_POST['name']    ?? '');
 $email   = trim($_POST['email']   ?? '');
 $message = trim($_POST['message'] ?? '');
 
-// 2) Server-side validation
+
 $errors = [];
 if ($name === '')    $errors[] = 'Name is required.';
 if ($email === '')   $errors[] = 'Email is required.';
 if ($message === '') $errors[] = 'Message is required.';
 
 if (!empty($errors)) {
-    // for simplicity, just dump and die
+    
     foreach ($errors as $err) {
         echo "<p style='color:red;'>".htmlspecialchars($err)."</p>";
     }
     exit;
 }
 
-// 3) Prepare & bind properly
+
 $stmt = $conn->prepare(
     "INSERT INTO feedback
        (feedback_name, feedback_email, feedback_message, feedback_time_sent)
@@ -40,7 +40,7 @@ if (! $stmt) {
     die("Prepare failed: " . htmlspecialchars($conn->error));
 }
 
-// **Bind the variables** (not $_POST directly)
+
 $stmt->bind_param(
     'sss',
     $name,

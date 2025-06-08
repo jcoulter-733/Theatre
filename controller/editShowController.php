@@ -16,26 +16,26 @@ $file  = $old;                   // default to old image
 
 // If a file was uploaded without error, normalize + move it:
 if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-    // 1) grab the real extension:
+// Change the file name to match show
     $origExt = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
     $ext = strtolower($origExt);
 
-    // 2) sanitize the show name into a filesystem-safe base:
+
     $base = preg_replace('/[^A-Za-z0-9 ]+/', '', $name);  // strip weird chars
-    $base = preg_replace('/\s+/', '_', $base);            // spaces → underscores
+    $base = preg_replace('/\s+/', '_', $base);            
     $base = strtolower($base);
 
-    // 3) build your new filename:
+
     $file = $base . ($ext ? '.' . $ext : '');
 
-    // 4) move it into your images folder:
+
     $tmpPath = $_FILES['image']['tmp_name'];
     $destDir = __DIR__ . '/../assets/images/';
     if (!is_dir($destDir)) mkdir($destDir, 0755, true);
     move_uploaded_file($tmpPath, $destDir . $file);
 }
 
-// Now update the record, including date_shown if you need it:
+
 $stmt = $conn->prepare("
   UPDATE shows
     SET show_name  = ?,
@@ -66,7 +66,7 @@ exit;
 
 
 function normalize_string($str) {
-  // you can keep this around for other uses, but it's no longer used for the image
+
   $base = pathinfo($str, PATHINFO_FILENAME);
   $ext  = pathinfo($str, PATHINFO_EXTENSION);
 

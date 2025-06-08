@@ -9,9 +9,7 @@
       <p class="text-yellow-500[15px] leading-loose">© The Theatre Company. All rights reserved.</p>
 
       <ul class="flex space-x-6 gap-y-2 max-lg:justify-bottom flex-wrap">
-        <li><a href="javascript:void(0)" class="text-yellow-500-[15px] hover:text-white">Terms of Service</a></li>
-        <li><a href="javascript:void(0)" class="text-yellow-500-[15px] hover:text-white">Privacy Policy</a></li>
-        <li><a href="javascript:void(0)" class="text-yellow-500-[15px] hover:text-white">Contact</a></li>
+        <li><a href="contact" class="text-yellow-500-[15px] hover:text-white">Contact</a></li>
       </ul>
     </div>
   </footer>

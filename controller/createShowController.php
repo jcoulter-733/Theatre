@@ -37,5 +37,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES["image_url"]["error"] == 0) 
     $_SESSION['statusMsg'] = "File upload error: " . $_FILES["image_url"]["error"];
 }
 
-header("Location: home"); // Change this to list of shows
+header("Location: show-management"); // Change this to list of shows
 exit;

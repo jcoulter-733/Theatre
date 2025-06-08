@@ -4,16 +4,16 @@ include 'database/config.php';
 ?>
 
 
-<div class="font-[sans-serif] bg-white md:h-screen">
+<div class="font-[sans-serif] bg-slate-700 md:h-screen">
       <div class="grid md:grid-cols-2 items-center gap-8 h-full">
-        <div class="max-md:order-1 p-4 bg-gray-50 h-full">
-          <img src="https://readymadeui.com/signin-image.webp" class="max-w-[80%] w-full h-full aspect-square object-contain block mx-auto" alt="login-image" />
+        <div class="max-md:order-1 p-4 bg-slate-800 h-full">
+          <img src="assets/images/login_bg.jpg" class="max-w-[80%] w-full h-full aspect-square object-contain block mx-auto" alt="login-image" />
         </div>
 
         <div class="flex items-center p-6 h-full w-full">
           <form class="max-w-lg w-full mx-auto" action="registerController"method="post">
             <div class="mb-8">
-              <h3 class="text-blue-500 text-2xl font-bold max-md:text-center">Create an account</h3>
+              <h3 class="text-yellow-500 text-2xl font-bold max-md:text-center">Create an account</h3>
             </div>
 
             <!-- status message -->
@@ -23,7 +23,7 @@ include 'database/config.php';
               <?php endif?>
 
             <div>
-              <label class="text-gray-800 text-xs block mb-2">Username</label>
+              <label class="text-yellow-500 text-xs block mb-2">Username</label>
               <div class="relative flex items-center">
                 <input name="username" type="text" required class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 pl-2 pr-8 py-3 outline-none" placeholder="Enter Username" />
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-[18px] h-[18px] absolute right-2" viewBox="0 0 24 24">
@@ -33,7 +33,7 @@ include 'database/config.php';
               </div>
             </div>
             <div class="mt-6">
-              <label class="text-gray-800 text-xs block mb-2">Email</label>
+              <label class="text-yellow-500 text-xs block mb-2">Email</label>
               <div class="relative flex items-center">
                 <input name="email" type="text" required class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 pl-2 pr-8 py-3 outline-none" placeholder="Enter email" />
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
@@ -50,7 +50,7 @@ include 'database/config.php';
               </div>
             </div>
             <div class="mt-6">
-              <label class="text-gray-800 text-xs block mb-2">Password</label>
+              <label class="text-yellow-500 text-xs block mb-2">Password</label>
               <div class="relative flex items-center">
                 <input name="password" type="password" required class="w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 pl-2 pr-8 py-3 outline-none" placeholder="Enter password" />
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-[18px] h-[18px] absolute right-2 cursor-pointer" viewBox="0 0 128 128">
@@ -60,8 +60,8 @@ include 'database/config.php';
             </div>
             <div class="flex items-center mt-6">
               <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 shrink-0 rounded" />
-              <label for="remember-me" class="ml-3 block text-sm text-gray-800">
-                I accept the <a href="javascript:void(0);" class="text-blue-500 font-semibold hover:underline ml-1">Terms and Conditions</a>
+              <label for="remember-me" class="ml-3 block text-sm text-yellow-500">
+                I accept the<a href="javascript:void(0);" class="text-yellow-600 font-semibold hover:underline ml-1">Terms and Conditions</a>
               </label>
             </div>
 
@@ -69,7 +69,7 @@ include 'database/config.php';
               <button type="submit" class="w-full py-2.5 px-4 text-sm tracking-wider rounded bg-blue-600 hover:bg-blue-700 text-white focus:outline-none">
                 Create an account
               </button>
-              <p class="text-sm mt-6 text-gray-800">Already have an account? <a href='<?= ROOT_DIR ?>pages/login.php' class="text-blue-500 font-semibold hover:underline ml-1">Login here</a></p>
+              <p class="text-sm mt-6 text-yellow-500">Already have an account? <a href='<?= ROOT_DIR ?>pages/login.php' class="text-red-500 font-semibold hover:underline ml-1">Login here</a></p>
             </div>
           </form>
         </div>

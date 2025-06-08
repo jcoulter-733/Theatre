@@ -23,7 +23,6 @@ if(strlen($password) < 8 || strlen($password) > 16) {
   exit();
 }
 
-// Validate email (basic validation, can be expanded)
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION['status_message'] = 'Invalid email format!';
     header('Location: register');
