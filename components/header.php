@@ -1,121 +1,120 @@
 <?php
-
-define('ROOT_DIR', '/johnc/theatre/'); 
+define('ROOT_DIR', '/johnc/theatre/');
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Theatre Company</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="<?= ROOT_DIR ?>assets/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Theatre Company</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="<?= ROOT_DIR ?>assets/css/style.css"/>
 </head>
 <body class="flex flex-col min-h-screen bg-slate-800 text-yellow-500">
-<header class='flex shadow-lg bg-slate-800 py-4 px-4 sm:px-10 font-[sans-serif] min-h-[70px] tracking-wide relative z-50 border-b-2 border-yellow-500'>
-  <div class='flex flex-wrap items-center justify-between gap-4 w-full'>
-  <img src="/johnc/theatre/assets/images/clyde_theatre_tp.png" alt="logo" class='flex-justify-center h-14 w-14' />
-    <a href="home" class="hidden max-sm:block">The Theatre Company</a>
 
-    <div id="collapseMenu" class='w-fit mx-auto max-lg:hidden lg:!block max-lg:w-full max-lg:fixed max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50'>
-    
-      <button id="toggleClose" class='lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white w-9 h-9 flex items-center justify-center border'>
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 fill-black" viewBox="0 0 320.591 320.591">
-          <path d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"></path>
-          <path d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"></path>
-        </svg>
-      </button>
+  <header class="bg-slate-800 border-b-2 border-yellow-500 relative z-50">
+    <div class="container mx-auto flex items-center justify-between px-4 py-4">
+      <!-- Logo + Title -->
+      <a href="<?= ROOT_DIR ?>home" class="flex items-center space-x-2">
+        <img src="<?= ROOT_DIR ?>assets/images/clyde_theatre_tp.png"
+             alt="logo"
+             class="h-14 w-14"/>
+        <span class="hidden sm:inline text-xl font-bold">
+          The Theatre Company
+        </span>
+      </a>
 
-      <ul
-  class="lg:flex            
-         lg:gap-x-8       
-         lg:justify-center 
-         lg:flex-1         
-         max-lg:space-y-6 max-lg:fixed max-lg:bg-white
-         max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0
-         max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto
-         z-50">
+      <!-- Desktop nav -->
+      <ul class="hidden lg:flex space-x-6">
+        <li><a href="<?= ROOT_DIR ?>home"       class="hover:text-yellow-200">Home</a></li>
+        <li><a href="<?= ROOT_DIR ?>blog-list"  class="hover:text-yellow-200">Blog</a></li>
+        <li><a href="<?= ROOT_DIR ?>show-list"  class="hover:text-yellow-200">Shows</a></li>
 
-        <li class='max-lg:border-b max-lg:py-3 px-3'>
+        <?php if (!empty($_SESSION['loggedin'])): ?>
+          <?php if ($_SESSION['role'] === 'admin'): ?>
+            <li><a href="<?= ROOT_DIR ?>admin"           class="hover:text-yellow-200">Dashboard</a></li>
+            <li><a href="<?= ROOT_DIR ?>comments"        class="hover:text-yellow-200">Comments</a></li>
+            <li><a href="<?= ROOT_DIR ?>edit-blogs"      class="hover:text-yellow-200">Edit Blogs</a></li>
+            <li><a href="<?= ROOT_DIR ?>add-blog"        class="hover:text-yellow-200">Add Blogs</a></li>
+            <li><a href="<?= ROOT_DIR ?>show-management" class="hover:text-yellow-200">Edit Shows</a></li>
+            <li><a href="<?= ROOT_DIR ?>new-show"        class="hover:text-yellow-200">Add Shows</a></li>
+            <li><a href="<?= ROOT_DIR ?>view-feedback"   class="hover:text-yellow-200">View Feedback</a></li>
+          <?php elseif ($_SESSION['role'] === 'user'): ?>
+            <li><a href="<?= ROOT_DIR ?>user" class="hover:text-yellow-200">Dashboard</a></li>
+          <?php endif; ?>
 
-          <a href='<?= ROOT_DIR ?>home' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Home</a>
-        </li>
-        <li class='max-lg:border-b max-lg:py-3 px-3'>
-          <a href='<?= ROOT_DIR ?>blog-list' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Blog</a>
-        </li>
-        <li class='max-lg:border-b max-lg:py-3 px-3'>
-          <a href='<?= ROOT_DIR ?>show-list' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Shows</a>
-        </li>
+          <li>
+            <a href="<?= ROOT_DIR ?>logoutController"
+               class="hover:text-yellow-200">
+              Logout (<?= htmlspecialchars($_SESSION['username']) ?>)
+            </a>
+          </li>
+        <?php else: ?>
+          <li><a href="<?= ROOT_DIR ?>login"    class="hover:text-yellow-200">Login</a></li>
+          <li><a href="<?= ROOT_DIR ?>register" class="hover:text-yellow-200">Sign Up</a></li>
+        <?php endif; ?>
 
-        <!-- Check if logged in and display role-based pages -->
-        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) : ?>
-          <?php if ($_SESSION['role'] === 'admin') : ?>
-            <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>admin' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Dashboard</a>
-            </li>
-            <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>comments' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Comments</a>
-            </li>
-            <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>edit-blogs' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Edit Blogs</a>
-            </li>
-            <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>add-blog' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Add Blogs</a>
-            </li>
-            <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>show-management' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Edit Shows</a>
-            </li>
-            <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>new-show' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Add Shows</a>
-            </li>
-            <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>view-feedback' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>View Feedback</a>
-            </li>
-          <?php elseif ($_SESSION['role'] === 'user') : ?>
-            <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>user' class='hover:text-[#007bff] text-yellow-500 block font-semibold text-[15px]'>Dashboard</a>
-            </li>
-          <?php endif ?>
-
-    
-        <?php endif ?>
-
-        <li class='max-lg:border-b max-lg:py-3 px-3'>
-          <a href='<?= ROOT_DIR ?>contact' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Contact</a>
-        </li>
+        <li><a href="<?= ROOT_DIR ?>contact" class="hover:text-yellow-200">Contact</a></li>
       </ul>
-    </div>
 
-    <div class='flex items-center ml-auto space-x-6'>
-      <!-- Only show the login and signup buttons if the user is not logged in -->
-      <?php if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) : ?>
-        <button class='font-semibold text-[15px] border-none outline-none'>
-          <a href='<?= ROOT_DIR ?>login' class='text-yellow-500 hover:underline'>Login</a>
-        </button>
-        <a href="<?= ROOT_DIR ?>register" class='px-4 py-2 text-sm rounded-sm font-bold text-black border-2 border-yellow-300 bg-yellow-500 transition-all ease-in-out duration-300 hover:bg-transparent hover:text-yellow-500'>Sign up</a>
-        <?php else : ?>
-           <span class='text-yellow-500 font-semibold text-[15px]'>
-            Logged in as <?= htmlspecialchars($_SESSION['username']) ?> (<?= htmlspecialchars($_SESSION['role']) ?>)
-          </span>
-          <button class='font-semibold text-[15px] border-none outline-none'>
-          <a href="<?= ROOT_DIR ?>logoutController" class='px-4 py-2 text-sm rounded-sm font-bold text-white border-2 border-red-800 bg-red-500 transition-all ease-in-out duration-300 hover:bg-transparent hover:text-yellow-500'>Logout</a>
-          
-          </button>
-         
-      <?php endif ?>
-
-      <button id="toggleOpen" class='lg:hidden'>
-        <svg class="w-7 h-7" fill="#333" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+      <!-- Mobile toggle -->
+      <button id="navToggle" class="lg:hidden focus:outline-none">
+        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd"
+                d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2z"
+                clip-rule="evenodd"/>
         </svg>
       </button>
     </div>
-  </div>
-</header>
-<main class="flex-grow">
+
+    <!-- Mobile nav -->
+    <nav id="mobileMenu" class="hidden lg:hidden bg-slate-700">
+      <ul class="space-y-4 p-4">
+        <li><a href="<?= ROOT_DIR ?>home"       class="block hover:text-yellow-200">Home</a></li>
+        <li><a href="<?= ROOT_DIR ?>blog-list"  class="block hover:text-yellow-200">Blog</a></li>
+        <li><a href="<?= ROOT_DIR ?>show-list"  class="block hover:text-yellow-200">Shows</a></li>
+
+        <?php if (!empty($_SESSION['loggedin'])): ?>
+          <?php if ($_SESSION['role'] === 'admin'): ?>
+            <li><a href="<?= ROOT_DIR ?>admin"           class="block hover:text-yellow-200">Dashboard</a></li>
+            <li><a href="<?= ROOT_DIR ?>comments"        class="block hover:text-yellow-200">Comments</a></li>
+            <li><a href="<?= ROOT_DIR ?>edit-blogs"      class="block hover:text-yellow-200">Edit Blogs</a></li>
+            <li><a href="<?= ROOT_DIR ?>add-blog"        class="block hover:text-yellow-200">Add Blogs</a></li>
+            <li><a href="<?= ROOT_DIR ?>show-management" class="block hover:text-yellow-200">Edit Shows</a></li>
+            <li><a href="<?= ROOT_DIR ?>new-show"        class="block hover:text-yellow-200">Add Shows</a></li>
+            <li><a href="<?= ROOT_DIR ?>view-feedback"   class="block hover:text-yellow-200">View Feedback</a></li>
+          <?php elseif ($_SESSION['role'] === 'user'): ?>
+            <li><a href="<?= ROOT_DIR ?>user" class="block hover:text-yellow-200">Dashboard</a></li>
+          <?php endif; ?>
+
+          <li>
+            <a href="<?= ROOT_DIR ?>logoutController"
+               class="block hover:text-yellow-200">
+              Logout (<?= htmlspecialchars($_SESSION['username']) ?>)
+            </a>
+          </li>
+        <?php else: ?>
+          <li><a href="<?= ROOT_DIR ?>login"    class="block hover:text-yellow-200">Login</a></li>
+          <li><a href="<?= ROOT_DIR ?>register" class="block hover:text-yellow-200">Sign Up</a></li>
+        <?php endif; ?>
+
+        <li><a href="<?= ROOT_DIR ?>contact" class="block hover:text-yellow-200">Contact</a></li>
+      </ul>
+    </nav>
+
+    <script>
+      document.getElementById('navToggle').addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.toggle('hidden');
+      });
+    </script>
+  </header>
+
+  <main class="flex-grow">
+    <!-- page content… -->
