@@ -4,7 +4,7 @@ session_start();
 $blogId = $_GET['bid'];
 $userId = $_GET['uid'];
 
-$insertComment = $conn->prepare("INSERT INTO blog_comment (content, blog_id, user_id) VALUES (?, ?, ?)");
+$insertComment = $conn->prepare("INSERT INTO blog_comments (comment_content, blog_id, user_id) VALUES (?, ?, ?)");
 
 // Bind parameters to prevent SQL injection
 $insertComment->bind_param("sii", $_POST['content'], $blogId, $userId);
@@ -22,5 +22,5 @@ $insertComment->close();
     
 
     // Redirect back to the blog page
-    header("Location: blogInfo?bid=" . $blogId);
+    header("Location: blog?bid=" . $blogId);
     exit();

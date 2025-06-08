@@ -9,11 +9,12 @@ $uid = isset($_GET['uid']) ? (int) $_GET['uid'] : 0;
     $approve = $conn->prepare("UPDATE 
     users SET 
     username = ? ,
-    email = ?
+    email = ?,
+    role = ?
     WHERE user_id = ?");
     
     // Bind the parameter (i = integer)
-    $approve->bind_param("ssi", $_POST['username'], $_POST['email'], $uid);
+    $approve->bind_param("sssi", $_POST['username'], $_POST['email'], $_POST['role'], $uid);
     
     // Execute the query
     if ($approve->execute()) {

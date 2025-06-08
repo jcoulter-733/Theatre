@@ -1,4 +1,6 @@
 <?php
+require_once 'auth.php';
+requireRole('admin');        // ← only admins allowed beyond this line
 include 'components/header.php';
 include 'database/config.php';
 // if(!isset($_SESSION['loggedin'])){

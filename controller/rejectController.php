@@ -6,14 +6,14 @@ session_start();
 $cid = isset($_GET['cid']) ? (int) $_GET['cid'] : 0;
 
     // Prepare the statement with a placeholder
-    $approve = $conn->prepare("UPDATE blog_comment SET status = 'rejected' WHERE id = ?");
+    $approve = $conn->prepare("UPDATE blog_comments SET comment_status = 'rejected' WHERE comment_id = ?");
     
     // Bind the parameter (i = integer)
     $approve->bind_param("i", $cid);
     
     // Execute the query
     if ($approve->execute()) {
-        $_SESSION['status_message'] = "Approved successfully!";
+        $_SESSION['status_message'] = "Rejected successfully!";
     } else {
         $_SESSION['status_message'] = "Error: " . $conn->error;
     }

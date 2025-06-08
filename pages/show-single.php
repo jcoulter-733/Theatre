@@ -9,20 +9,18 @@ s.show_name,
 s.show_type,
 s.show_info,
 s.date_shown,
-s.date_added
+s.date_added,
+s.show_image
 FROM shows s
 WHERE s.show_id = $id
 ");
 
 $blog->execute();
 $blog->store_result();
-$blog->bind_result($name, $type, $showInfo, $dateShown, $dateAdded);
+$blog->bind_result($name, $type, $showInfo, $dateShown, $dateAdded, $showImage);
 $blog->fetch();
 
-$fileType = '.jpeg';
-$formattedName = str_replace(' ', '_', $name);
-$imageFolder = 'assets/images/';
-$imageLink = $imageFolder . $formattedName . $fileType;
+
 
 
     //   Format the date if $created_at is defined; otherwise, provide a fallback.
@@ -46,7 +44,7 @@ $imageLink = $imageFolder . $formattedName . $fileType;
     <div class="mt-8 lg:-mx-6 lg:flex lg:items-start">
       <img
         class=" border-4 border-red-500 object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96"
-        src="<?= ROOT_DIR ?><?= $imageLink ?>"
+        src="<?= ROOT_DIR ?>assets/images/<?= $showImage ?>"
         alt="<?= $name ?>"
       />
 

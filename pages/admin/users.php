@@ -1,3 +1,9 @@
+<?php
+require_once 'auth.php';
+requireRole('admin');        // ← only admins allowed beyond this line
+include 'components/header.php';
+include 'database/config.php';
+?>
 <form class="space-y-4 font-[sans-serif] max-w-md mx-auto">
       <input type="email" placeholder="Enter Email"
         class="px-4 py-3 bg-gray-100 w-full text-sm outline-none border-b-2 border-blue-500 rounded" />

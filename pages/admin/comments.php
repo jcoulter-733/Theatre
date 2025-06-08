@@ -1,10 +1,13 @@
 <?php
 // Include database configuration and header
-include 'database/config.php';
+require_once 'auth.php';
+requireRole('admin');        // ← only admins allowed beyond this line
 include 'components/header.php';
+include 'database/config.php';
 
 // Prepare the SQL query to fetch comments along with blog and user data
 $comments = $conn->prepare("SELECT
+c.comment_id,
 c.user_id,
 c.comment_content,
 c.comment_created,
@@ -14,21 +17,21 @@ b.blog_title,
 b.blog_image
 FROM blog_comments c
 INNER JOIN users u ON c.user_id = u.user_id
-INNER JOIN blogs b ON c.blog_id = b.blog_id
+INNER JOIN newblogs b ON c.blog_id = b.blog_id
 ORDER BY 
     CASE 
-        WHEN c.status = 'pending' THEN 1 
-        WHEN c.status = 'published' THEN 2 
-        WHEN c.status = 'rejected' THEN 3 
+        WHEN c.comment_status = 'pending' THEN 1 
+        WHEN c.comment_status = 'published' THEN 2 
+        WHEN c.comment_status = 'rejected' THEN 3 
     END ");
 $comments->execute(); // Execute the query
 $comments->store_result(); // Store the result for later use
-$comments->bind_result($commentId, $comment, $created, $commentStatus, $username, $blogTitle, $blogImg); // Bind the results to variables
+$comments->bind_result($commentId, $userId, $comment, $created, $commentStatus, $username, $blogTitle, $blogImg); // Bind the results to variables
 ?>
-<section class="bg-white">
+<section class="bg-slate-800">
     <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <!-- Section heading -->
-        <h2 class="text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+        <h2 class="text-center text-4xl font-bold tracking-tight text-yellow-500 sm:text-5xl">
             All comments from users
         </h2>
 
@@ -69,24 +72,24 @@ $comments->bind_result($commentId, $comment, $created, $commentStatus, $username
                             <?php if($commentStatus === 'pending') : ?>
                             <!-- Approve and Reject buttons for 'pending' status -->
                              <!-- Use urlencode to escape comment ID in URL -->
-                            <button  onclick="window.location.href='approve?cid=<?= urlencode($commentId) ?>'" 
+                            <button  onclick="window.location.href='approve-comment?cid=<?= urlencode($commentId) ?>'" 
                                 class="inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative">
                                 Approve
                             </button>
 
-                            <button onclick="window.location.href='reject?cid=<?= urlencode($commentId) ?>'"
+                            <button onclick="window.location.href='reject-comment?cid=<?= urlencode($commentId) ?>'"
                                 class="inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative">
                                 Reject
                             </button>
                             <?php elseif($commentStatus === 'rejected') : ?>
                             <!-- Approve button for 'rejected' status -->
-                            <button  onclick="window.location.href='approve?cid=<?= urlencode($commentId) ?>'"
+                            <button  onclick="window.location.href='approve-comment?cid=<?= urlencode($commentId) ?>'"
                                 class="inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative">
                                 Approve
                             </button>
-                            <?php elseif($commentStatus === 'published') : ?>
+                            <?php elseif($commentStatus === 'approved') : ?>
                             <!-- Reject button for 'approved' status -->
-                            <button onclick="window.location.href='reject?cid=<?= urlencode($commentId) ?>'"
+                            <button onclick="window.location.href='reject-comment?cid=<?= urlencode($commentId) ?>'"
                                 class="inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative">
                                 Reject
                             </button>

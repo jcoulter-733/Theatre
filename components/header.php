@@ -1,7 +1,10 @@
 <?php
 
 define('ROOT_DIR', '/johnc/theatre/'); 
-session_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
@@ -14,8 +17,8 @@ ini_set('display_errors', 1);
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="<?= ROOT_DIR ?>assets/css/style.css">
 </head>
-<body class="flex flex-col min-h-screen">
-<header class='flex shadow-lg bg-slate-800 py-4 px-4 sm:px-10 font-[sans-serif] min-h-[70px] tracking-wide relative z-50'>
+<body class="flex flex-col min-h-screen bg-slate-800 text-yellow-500">
+<header class='flex shadow-lg bg-slate-800 py-4 px-4 sm:px-10 font-[sans-serif] min-h-[70px] tracking-wide relative z-50 border-b-2 border-yellow-500'>
   <div class='flex flex-wrap items-center justify-between gap-4 w-full'>
   <img src="/johnc/theatre/assets/images/clyde_theatre_tp.png" alt="logo" class='flex-justify-center h-14 w-14' />
     <a href="home" class="hidden max-sm:block">The Theatre Company</a>
@@ -29,11 +32,18 @@ ini_set('display_errors', 1);
         </svg>
       </button>
 
-      <ul class='lg:flex lg:gap-x-8 max-lg:space-y-6 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50'>
-      
-        
+      <ul
+  class="lg:flex            
+         lg:gap-x-8       
+         lg:justify-center 
+         lg:flex-1         
+         max-lg:space-y-6 max-lg:fixed max-lg:bg-white
+         max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0
+         max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto
+         z-50">
+
         <li class='max-lg:border-b max-lg:py-3 px-3'>
-        
+
           <a href='<?= ROOT_DIR ?>home' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Home</a>
         </li>
         <li class='max-lg:border-b max-lg:py-3 px-3'>
@@ -50,7 +60,7 @@ ini_set('display_errors', 1);
               <a href='<?= ROOT_DIR ?>admin' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Dashboard</a>
             </li>
             <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>admin/comments' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Comments</a>
+              <a href='<?= ROOT_DIR ?>comments' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Comments</a>
             </li>
             <li class='max-lg:border-b max-lg:py-3 px-3'>
               <a href='<?= ROOT_DIR ?>edit-blogs' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Edit Blogs</a>
@@ -58,9 +68,18 @@ ini_set('display_errors', 1);
             <li class='max-lg:border-b max-lg:py-3 px-3'>
               <a href='<?= ROOT_DIR ?>add-blog' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Add Blogs</a>
             </li>
+            <li class='max-lg:border-b max-lg:py-3 px-3'>
+              <a href='<?= ROOT_DIR ?>show-management' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Edit Shows</a>
+            </li>
+            <li class='max-lg:border-b max-lg:py-3 px-3'>
+              <a href='<?= ROOT_DIR ?>new-show' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>Add Shows</a>
+            </li>
+            <li class='max-lg:border-b max-lg:py-3 px-3'>
+              <a href='<?= ROOT_DIR ?>view-feedback' class='hover:text-yellow-200 text-yellow-500 block font-semibold text-[15px]'>View Feedback</a>
+            </li>
           <?php elseif ($_SESSION['role'] === 'user') : ?>
             <li class='max-lg:border-b max-lg:py-3 px-3'>
-              <a href='<?= ROOT_DIR ?>user/dashboard' class='hover:text-[#007bff] text-yellow-500 block font-semibold text-[15px]'>Dashboard</a>
+              <a href='<?= ROOT_DIR ?>user' class='hover:text-[#007bff] text-yellow-500 block font-semibold text-[15px]'>Dashboard</a>
             </li>
           <?php endif ?>
 
@@ -81,9 +100,14 @@ ini_set('display_errors', 1);
         </button>
         <a href="<?= ROOT_DIR ?>register" class='px-4 py-2 text-sm rounded-sm font-bold text-black border-2 border-yellow-300 bg-yellow-500 transition-all ease-in-out duration-300 hover:bg-transparent hover:text-yellow-500'>Sign up</a>
         <?php else : ?>
+           <span class='text-yellow-500 font-semibold text-[15px]'>
+            Logged in as <?= htmlspecialchars($_SESSION['username']) ?> (<?= htmlspecialchars($_SESSION['role']) ?>)
+          </span>
           <button class='font-semibold text-[15px] border-none outline-none'>
           <a href="<?= ROOT_DIR ?>logoutController" class='px-4 py-2 text-sm rounded-sm font-bold text-white border-2 border-red-800 bg-red-500 transition-all ease-in-out duration-300 hover:bg-transparent hover:text-yellow-500'>Logout</a>
+          
           </button>
+         
       <?php endif ?>
 
       <button id="toggleOpen" class='lg:hidden'>

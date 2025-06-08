@@ -29,7 +29,7 @@ if (strlen($content) < 5 || strlen($content) > 500) {
 }
 // Prepare and execute statement
 // Using prepared statements will help prevent sql injection
-$insertComment = $conn->prepare("INSERT INTO blog_comment (content, blog_id, user_id) VALUES (?, ?, ?)");
+$insertComment = $conn->prepare("INSERT INTO blog_comments (comment_content, blog_id, user_id) VALUES (?, ?, ?)");
 
 if ($insertComment) {
     $insertComment->bind_param("sii", $content, $blogId, $userId);
@@ -46,6 +46,6 @@ if ($insertComment) {
 }
 
 // Redirect back to the blog page
-header("Location: blogInfo?bid=" . $blogId);
+header("Location: blog?bid=" . $blogId);
 exit();
 ?>

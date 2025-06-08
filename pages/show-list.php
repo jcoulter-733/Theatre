@@ -35,24 +35,25 @@ $blog->bind_result($id, $name, $type, $image, $date_shown, $date_added);
           $formattedDateShown = 'Unknown Date';
       }
  
-    $fileType = '.jpeg';
+    /* $fileType = '.jpeg';
     $formattedName = str_replace(' ', '_', $name);
     $imageFolder = 'assets/images/';
-    $imageLink = $imageFolder . $formattedName . $fileType;
+    $imageLink = $imageFolder . $formattedName . $fileType; */
     ?>
   
   <a href="show?bid=<?= $id ?> ">
-    <img src="<?= ROOT_DIR?><?= $imageLink ?>" alt="<?= $name ?>" class="w-full h-96 object-cover" />
+    <img src="<?= ROOT_DIR?>assets/images/<?= $image ?>" alt="<?= $name ?>" class="w-full h-96 object-cover" />
   </a>
     
     <div class= "p-6 absolute bottom-0 left-0 right-0 bg-black opacity-75 border-2 border-white">
-    
-      <span class="text-sm block text-white mb-2"><?= $formattedDateShown ?> | BY AUTHOR</span>
-      <h3 class="text-xl font-bold text-white"><?= $name ?></h3>
 
-      <div class="h-0 overflow-hidden group-hover:h-16 group-hover:mt-4 transition-all duration-600">
+      <span class="text-sm font-semibold block text-white mb-2"><?= $formattedDateShown ?></span>
+      <span class="text-sm block text-white mb-2">The Theatre Company Presents</span>
+      <h3 class="text-2xl font-bold text-yellow-500"><?= $name ?></h3>
+
+      <div class="h-0 overflow-hidden group-hover:h-16 group-hover:mt-4 transition-all duration-800">
         <a href="show?bid=<?= $id ?>" class="text-white text-sm">Read More</a>
-        <p class="text-white text-sm"><?= $type ?></p>
+        
       </div>
 
     </div>

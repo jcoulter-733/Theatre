@@ -5,16 +5,17 @@ include 'components/header.php';
 include 'database/config.php';
 
 $comments = $conn->prepare("SELECT
-blog_id,
-blog_title,
-blog_status,
-created_at
-FROM newblogs
-ORDER BY created_at
+show_id,
+show_name,
+show_info,
+show_type,
+date_shown
+FROM shows
+ORDER BY date_shown ASC
 ");
 $comments->execute(); // Execute the query
 $comments->store_result(); // Store the result for later use
-$comments->bind_result($blogId,$title, $status, $created); // Bind the results to variables
+$comments->bind_result($showId, $showName, $showInfo, $showType, $dateShown); // Bind the results to variables
 ?>
 
 <div class="overflow-x-auto flex justify-center">
@@ -22,8 +23,8 @@ $comments->bind_result($blogId,$title, $status, $created); // Bind the results t
     <thead>
       <tr>
         <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900 align-left">Name</th>
-        <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">Status</th>
-        <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">Created</th>
+        <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">Type</th>
+        <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">Date Shown</th>
         <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">Actions</th>
 
       </tr>
@@ -31,36 +32,25 @@ $comments->bind_result($blogId,$title, $status, $created); // Bind the results t
     <tbody class="divide-y divide-gray-200">
     <?php while($comments->fetch()) : ?>
       <tr>
-        <td class="px-4 py-2 font-medium whitespace-nowrap text-gray-900"> <?= htmlspecialchars($title) ?></td>
-        <td class="px-4 py-2 whitespace-nowrap text-gray-700"><?= htmlspecialchars($status) ?></td>
-        <td class="px-4 py-2 whitespace-nowrap text-gray-700"><?= htmlspecialchars($created) ?></td>
+        <td class="px-4 py-2 font-medium whitespace-nowrap text-gray-900"> <?= htmlspecialchars($showName) ?></td>
+        <td class="px-4 py-2 whitespace-nowrap text-gray-700"><?= htmlspecialchars($showType) ?></td>
+        <td class="px-4 py-2 whitespace-nowrap text-gray-700"><?= htmlspecialchars($dateShown) ?></td>
         <td class="px-4 py-2 whitespace-nowrap">
           <a
-            href="edit-blog?bid=<?=$blogId ?>"
+            href="edit-show?sid=<?=$showId?>"
             class="inline-block rounded-sm bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
           >
             Edit
           </a>
           <a
-            href="#"
+            href="delete-show?sid=<?=$showId?>"
+            
             class="inline-block rounded-sm bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
           >
             Delete
           </a>
-          <?php if($status === 'pending') : ?>
-          <a href='publish-blog?bid=<?=$blogId ?>'
-            class="bg-green-600 inline-block rounded-sm bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
-          >
-            Publish
-          </a>
+        
 
-          <?php else : ?>
-          <a href='unpublish-blog?bid=<?=$blogId ?>'
-            class="bg-red-600 inline-block rounded-sm bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
-          >
-          unpublish
-        </a>
-        <?php endif ?>
         </td>
       </tr>
       <?php endwhile ?>

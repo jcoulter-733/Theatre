@@ -6,8 +6,8 @@ session_start();
 $cid = isset($_GET['cid']) ? (int) $_GET['cid'] : 0;
 
     // Prepare the statement with a placeholder
-    $approve = $conn->prepare("UPDATE blog_comment SET status = 'approved' WHERE id = ?");
-    
+    $approve = $conn->prepare("UPDATE blog_comments SET comment_status = 'approved' WHERE comment_id = ?");
+
     // Bind the parameter (i = integer)
     $approve->bind_param("i", $cid);
     
